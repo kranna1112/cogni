@@ -1,0 +1,25 @@
+!!! 5
+%html{:lang => "en"}
+  %head
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "ie=edge", "http-equiv" => "x-ua-compatible"}/
+    %title= content_for?(:title) ? yield(:title) : "Global Supply Chain Solutions | Mobility Empowered"
+    %meta{content: content_for?(:description) ? yield(:description) : "Targeted supply chain solutions for the global mobility and relocation industry.", name: "description"}
+    %link{href: '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet', type: 'text/css'}
+    %link{href: '//fonts.googleapis.com/css?family=Lato:300,400,700', rel: 'stylesheet', type: 'text/css'}
+    %link{href: '//fonts.googleapis.com/css?family=Roboto:400,700,300', rel: 'stylesheet', type: 'text/css'}
+    = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body{:class => "#{controller_name} #{action_name}"}
+    .wrapper
+      - if user_signed_in?
+        = render 'secure_header_old'
+      - else
+        = render 'layouts/header'
+      .container-fluid
+        .content
+          = render 'layouts/messages'
+          = yield
+    = render 'layouts/secure_footer'

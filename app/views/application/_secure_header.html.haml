@@ -1,0 +1,135 @@
+.main-panel
+  %nav.navbar.navbar-default
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle.collapsed{"data-target" => "me-navbar-collapse", "data-toggle" => "collapse", "aria-expanded" => false}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        .navbar-brand
+          %ul.nav.navbar-nav.text-uppercase
+            - if current_user.has_multiple_organizations?
+              %li.dropdown
+                %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown' }
+                  = @current_membership.name
+                  %b.caret
+                %ul.dropdown-menu
+                  - current_user.active_organizations.each do |org|
+                    %li=link_to org.name, switch_users_path(organization_id: org.id), :method => 'PUT'
+            - else
+              %li
+                = current_user.current.organization.name
+              -#= link_to @current_membership.name, organization_path(@current_membership)
+
+      %ul.nav.navbar-nav.text-uppercase.navbar-right
+        %li#notifications-box.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-bell-o
+            %span.badge
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "javascript:void(0)"}
+                %span.text-muted No Unread Messages
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", role: "button"}
+            -#= image_tag(current_user.avatar.url(:thumb), class: "nav-photo img-circle", alt: "user")
+            = current_user.first_name
+            %b.caret
+          %ul.dropdown-menu
+            - if can? :profile, User
+              %li
+                = link_to profile_user_path(current_user) do
+                  %i.fa.fa-user.fa-fw
+                  Profile
+            %li
+              = link_to destroy_user_session_path, :method => 'delete' do
+                %i.fa.fa-sign-out.fa-fw
+                Log Out
+
+  -#%nav.navbar.navbar-fixed-top.navbar-secondary
+  -#  .container-fluid
+  -#    .collapse.navbar-collapse.navbar-right#me-navbar-collapse
+  -#      %ul.nav.navbar-nav.text-uppercase
+  -#        - if current_user.has_multiple_organizations?
+  -#          %li.dropdown
+  -#            %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown' }
+  -#              = @current_membership.name
+  -#              %b.caret
+  -#            %ul.dropdown-menu
+  -#              - current_user.active_organizations.each do |org|
+  -#                %li=link_to org.name, switch_users_path(organization_id: org.id), :method => 'PUT'
+  -#        - else
+  -#          %li
+  -#            = link_to @current_membership.name, organization_path(@current_membership)
+          -#- if can? :read, Relocation
+          -#  %li
+          -#    = link_to "Relocations", organization_relocations_path(@current_membership)
+          -#- if can? :accounting, Organization
+          -#  %li
+          -#    = link_to "Accounting", accounting_organization_path(current_user.current.organization_id)
+          -#- if can? :legal, Organization
+          -#  %li
+          -#    = link_to "Legal", legal_organization_path(current_user.current.organization_id)
+          -#- if can? :administration, Organization
+          -#  %li
+          -#    = link_to administration_organization_path(current_user.current.organization_id) do
+          -#      %i.fa.fa-cogs.fa-fw
+-#
+-#%header.navbar.navbar-static-top.nl-navbar{role: "banner"}
+-#  .container-fluid.navbar-thin
+-#    .navbar-header
+-#      %button.navbar-toggle{"data-target" => "bs-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+-#        %span.sr-only Toggle navigation
+-#        %span.icon-bar
+-#        %span.icon-bar
+-#        %span.icon-bar
+-#      =link_to root_path, class: "navbar-brand text-uppercase" do
+-#        %strong< mobility
+-#        empowered
+-#    .navbar-collapse.collapse.navbar-right.nl-navbar-dark
+-#      %ul.nav.navbar-nav.text-uppercase
+-#        - if current_user.has_multiple_organizations?
+-#          %li.dropdown
+-#            %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown' }
+-#              = @current_organization.name
+-#              %b.caret
+-#            %ul.dropdown-menu
+-#              - current_user.active_organizations.each do |org|
+-#                %li=link_to org.name, switch_users_path(organization_id: org.id), :method => 'PUT'
+-#        - else
+-#          %li
+-#            = link_to @current_organization.name, organization_path(@current_organization)
+-#        %li.dropdown
+-#          %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => "#"}
+-#            Marketplace
+-#            %b.caret
+-#          %ul.dropdown-menu
+-#            -#%li
+-#            -#  = link_to "#" do
+-#            -#    %i.fa.fa-credit-card.fa-fw
+-#            -#    &nbsp; Orders
+-#            - if can? :read, ServiceListing
+-#              %li
+-#                = link_to service_listings_path do
+-#                  %i.fa.fa-credit-card.fa-fw
+-#                  &nbsp; Listings
+-#            - if can? :read, Catalog
+-#              %li
+-#                = link_to "#" do
+-#                  %i.fa.fa-credit-card.fa-fw
+-#                  &nbsp; Catalogs
+-#
+-#        -#- if (current_user.current.is_admin? or current_user.current.is_manager?) and current_user.can_access_finance?(current_user.current.organization_id)
+-#        -#  %li.dropdown
+-#        -#    %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => "#"}
+-#        -#      Finance
+-#        -#      %b.caret
+-#        -#    %ul.dropdown-menu
+-#        -#      %li
+-#        -#        = link_to "#" do
+-#        -#          %i.fa.fa-credit-card.fa-fw
+-#        -#          &nbsp; Billing
+-#
+

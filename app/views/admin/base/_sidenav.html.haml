@@ -1,0 +1,39 @@
+%ul.nav.nav-sidebar
+  %li.text-center.sidebar-org-name.text-uppercase
+    Administration
+  = active_link_to admin_dashboard_path, wrap_tag: :li do
+    %i.fa.fa-dashboard.fa-fw
+    Dashboard
+  = active_link_to admin_users_path, wrap_tag: :li do
+    %i.fa.fa-users.fa-fw
+    Users
+  = active_link_to admin_organizations_path, wrap_tag: :li do
+    %i.fa.fa-industry.fa-fw
+    Organizations
+  = active_link_to admin_service_types_path, wrap_tag: :li do
+    %i.fa.fa-list.fa-fw
+    Service Types
+
+  -#= active_link_to admin_service_categories_path, wrap_tag: :li do
+  -#  %i.fa.fa-list.fa-fw
+  -#  Service Categories
+  -#= active_link_to "#geography", active: :exclusive, data: {toggle: "collapse"}, wrap_tag: :li do
+  -#  %i.fa.fa-globe.fa-fw
+  -#  Geographies
+  -#  %span.fa.fa-angle-down
+  -#%ul.nav.submenu.collapse#geography
+  -#  = active_link_to admin_countries_path, wrap_tag: :li do
+  -#    %i.fa.fa-angle-double-right.fa-fw
+  -#    Countries
+  -#  = active_link_to admin_subdivisions_path, wrap_tag: :li do
+  -#    %i.fa.fa-angle-double-right.fa-fw
+  -#    States/Provinces
+  -#  = active_link_to admin_metro_areas_path, wrap_tag: :li do
+  -#    %i.fa.fa-angle-double-right.fa-fw
+  -#    Metropolitan Areas
+  -#  = active_link_to admin_cities_path, wrap_tag: :li do
+  -#    %i.fa.fa-angle-double-right.fa-fw
+  -#    Cities
+  -#  = active_link_to admin_postal_codes_path, wrap_tag: :li do
+  -#    %i.fa.fa-angle-double-right.fa-fw
+  -#    Postal Codes

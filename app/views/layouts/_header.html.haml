@@ -1,0 +1,23 @@
+%header
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "bs-navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      =link_to (image_tag "logo_black.png", alt: "Mobility Empowered", "data-sticky-width" => "270", "data-sticky-height" => "26"),root_path, class: "navbar-brand logo"
+    .collapse.navbar-collapse
+      - if user_signed_in?
+        = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "navbar-btn btn btn-success pull-right"
+
+      - else
+        = link_to 'Sign In', new_user_session_path, class: "navbar-btn btn btn-warning pull-right", id: "sign_in", role: "button"
+
+
+  .navbar-collapse.navbar-main-collapse.collapse.nl-navbar.navbar-thin{:role => "navigation"}
+    .container
+      %nav.nav-main
+        %ul.nav.pull-right.navbar-nav#mainMenu
+          %li
+            %a{"data-hash" => "", :href => "#solutions"} Solutions

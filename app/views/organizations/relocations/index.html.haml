@@ -1,0 +1,23 @@
+.row
+  .col-sm-12
+    .card
+      .header
+        %strong.title.text-uppercase Relocations
+        - if can? :new, @organization => Relocation
+          = link_to 'New Relocation', new_organization_relocation_path, remote: true, class: 'btn btn-primary-me pull-right'
+
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Employee
+              %th Status
+              %th Organization
+              %th Budget
+              %th Origin
+              %th Destination
+              %th{colspan:"2"}
+
+          %tbody.relocation-index
+            = render 'index'
+.modal.fade#relocation-modal

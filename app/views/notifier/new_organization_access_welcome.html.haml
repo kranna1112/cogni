@@ -1,0 +1,15 @@
+%p Hello #{@user.first_name}
+
+%p You have been granted access to #{@organization.name} on Mobility Empowered. You can login to Mobility Empowered through the following link.
+
+%p
+  =link_to "Login to mobilityempowered.com", root_url
+
+%p
+  If you have questions or need any assistance, please don't hesitate to
+  =mail_to "service@mobilityempowered.com", "email us."
+
+%p
+  Mobility Empowered
+  %br/
+  %small Relocation powered by ME&copy;

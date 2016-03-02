@@ -1,0 +1,150 @@
+//Mobility Empowered Styling
+//body {
+//  padding-top: 90px;
+//}
+
+//.navbar-primary {
+//  height: 40px;
+//  min-height: 40px;
+//  margin-bottom: 0;
+//  z-index: 1050;
+//  background-color: #fff;
+//}
+
+//.navbar-brand {
+//  color: black;
+//  font-size: 20px;
+//  font-weight: 400;
+//  height: 40px;
+//  padding: 10px 10px;
+//}
+//
+//.navbar-brand small {
+//  font-size: 75%;
+//}
+//
+//.navbar-brand:hover {
+//  color: #FF8300;
+//}
+//
+//.navbar-primary .navbar-right {
+//  margin-right: 5px;
+//}
+//
+//.navbar-primary .navbar-nav > li > a {
+//  color: black;
+//}
+//
+//.navbar-primary .navbar-nav > li > a:hover {
+//  //color: #FF8300;
+//  color: white;
+//}
+//
+//.navbar-primary .nav .open > a, .navbar-primary .nav .open > a:hover, .navbar-primary .nav .open > a:focus {
+//  background-color: #FF8300;
+//  border-color: #FF8300;
+//}
+//
+//.navbar-secondary {
+//  background-color: #00abe3;
+//  margin-top: 40px;
+//  margin-bottom: 0;
+//}
+//
+//.navbar-secondary .navbar-nav > li > a {
+//  color: white;
+//}
+//
+//.navbar-secondary .navbar-nav > li > a:hover {
+//  //background-color: #06C1FF;
+//  background-color: #00779E;
+//}
+//
+//.navbar-secondary .nav .open > a, .navbar-secondary .nav .open > a:hover, .navbar-secondary .nav .open > a:focus {
+//  background-color: #00779E;
+//  border-color: #00779E;
+//}
+//
+//.navbar-primary .navbar-nav > li > a {
+//  padding-top: 10px;
+//  padding-bottom: 10px;
+//}
+//
+//.navbar-nav > li > .dropdown-menu:before {
+//  content: "";
+//  position: absolute;
+//  top: -3px;
+//  height: 0;
+//  left: 0;
+//  width: 100%;
+//  border-top: 3px solid #FF8300;
+//}
+//
+//.navbar-nav .dropdown-menu > li > a {
+//  padding: 7px 30px 7px 10px;
+//  border-bottom: 1px solid #eee;
+//}
+//.navbar-nav .dropdown-menu > li:last-child > a {
+//  border-bottom: 0;
+//}
+//
+//.navbar-toggle .icon-bar {
+//  background-color: #00abe3;
+//}
+
+#notifications-box .badge {
+  display: none;
+  background-color: red;
+  padding: 2px 5px;
+}
+
+.unread#notifications-box {
+  background-color: red;
+  i { color: white; }
+
+  .badge {
+    display: inline-block;
+  }
+  a:hover {
+    color: #000000;
+  }
+}
+
+//.section-title {
+//  border-bottom: 1px solid #ddd;
+//  padding-bottom: 5px;
+//  margin-top: 25px;
+//  text-transform: uppercase;
+//  color: #999;
+//}
+
+.btn-primary-me {
+  background-color: #FF8300;
+  border-color: #FF8300;
+  color: white;
+}
+
+.btn-primary-me:hover,
+.btn-primary-me:focus,
+.btn-primary-me:active,
+.btn-primary-me.active {
+  background-color: #EA7600;
+  border-color: #FF8300;
+  color: white;
+}
+.btn-primary-me.disabled:hover,
+.btn-primary-me.disabled:focus,
+.btn-primary-me.disabled:active,
+.btn-primary-me.disabled.active,
+.btn-primary-me[disabled]:hover,
+.btn-primary-me[disabled]:focus,
+.btn-primary-me[disabled]:active,
+.btn-primary-me[disabled].active,
+fieldset[disabled] .btn-primary-me:hover,
+fieldset[disabled] .btn-primary-me:focus,
+fieldset[disabled] .btn-primary-me:active,
+fieldset[disabled] .btn-primary-me.active {
+  background-color: #EA7600;
+  border-color: #EA7600;
+  color: white;
+}

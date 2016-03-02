@@ -1,0 +1,21 @@
+.row
+  .col-sm-12
+    .card
+      .header
+        %strong.title.text-uppercase policies
+        -if can? :create, @organization => Policy
+          = link_to 'New Policy', new_organization_policy_path, remote: true,  class: 'btn btn-primary-me pull-right'
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Name
+              %th Description
+              %th Status
+              %th Effective Date
+              %th Expiration Date
+              %th Actions
+
+          %tbody.policy-index
+            = render 'organizations/policies/index'
+.modal.fade#policy-modal

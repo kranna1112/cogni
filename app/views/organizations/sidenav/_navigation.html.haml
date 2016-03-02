@@ -1,0 +1,31 @@
+%ul.nav.nav-sidebar
+  %li.text-center.sidebar-org-name
+    Administration
+  - if can? :dashboard, Organization
+    = active_link_to dashboard_organization_path(@organization), active: :exclusive, wrap_tag: :li do
+      %i.fa.fa-dashboard.fa-fw
+      Overview
+  - if can? :read, @organization => Relocation and @current_membership.is_customer?
+    = active_link_to organization_relocations_path(@organization), active: :exclusive, wrap_tag: :li do
+      %i.fa.fa-map-o.fa-fw
+      Relocations
+  - if can? :read, @organization => User
+    = active_link_to organization_users_path(@organization), wrap_tag: :li do
+      %i.fa.fa-users.fa-fw
+      Users
+  - if can? :read, @organization => Employee and @current_membership.is_customer?
+    = active_link_to organization_employees_path(@organization), wrap_tag: :li do
+      %i.fa.fa-users.fa-fw
+      Employees
+  - if can? :read, @organization => Policy and @current_membership.is_customer?
+    = active_link_to organization_policies_path(@organization), wrap_tag: :li do
+      %i.fa.fa-file-text-o.fa-fw
+      Policies
+  - if can? :read, @organization => Membership
+    = active_link_to organization_memberships_path(@organization), wrap_tag: :li do
+      %i.fa.fa-eye.fa-fw
+      Members
+  - if can? :read, @organization => Relationship
+    = active_link_to organization_relationships_path(@organization), wrap_tag: :li do
+      %i.fa.fa-heartbeat.fa-fw
+      Relationships

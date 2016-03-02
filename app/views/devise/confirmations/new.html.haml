@@ -1,0 +1,17 @@
+.container#toppad50
+  .row
+    .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+      .sign-form
+        %h3.first-child Resend Confirmation Instructions
+        %hr
+        = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), html: {method: :post}) do |f|
+          = render 'shared/error_messages', :object => f.object
+          .form-group.input-group
+            %span.input-group-addon
+              %i.fa.fa-envelope-o.fa-fw
+            = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control'
+          %div.actions
+            = f.submit "Resend Confirmation Instructions", class: 'btn btn-color'
+
+        %hr
+          = render "devise/shared/links"

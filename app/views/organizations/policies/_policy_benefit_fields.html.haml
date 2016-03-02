@@ -1,0 +1,9 @@
+.nested-fields
+  %hr
+  .row
+    = f.input :id, :as => :hidden
+    = f.input :name, as: :string, label: 'Name', wrapper_html: { class: 'col-md-6'}
+    = f.input :service_type_id, collection: ServiceType.all, wrapper_html: { class: 'col-md-6'}
+    = f.input :description, placeholder: 'Please describe benifits.', wrapper_html: { class: 'col-md-12'}
+
+    / = link_to_remove_association "Remove benifit", f

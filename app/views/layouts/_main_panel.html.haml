@@ -1,0 +1,48 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "me-navbar-collapse", "data-toggle" => "collapse", "aria-expanded" => false}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .navbar-brand
+        %ul.nav.navbar-nav.text-uppercase
+          - if current_user.has_multiple_organizations?
+            %li.dropdown
+              %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown' }
+                = @current_membership.name
+                %b.caret
+              %ul.dropdown-menu
+                - current_user.active_organizations.each do |org|
+                  %li=link_to org.name, switch_users_path(organization_id: org.id), :method => 'PUT'
+          - else
+            %li
+              = current_user.current.organization.name
+    -#= link_to @current_membership.name, organization_path(@current_membership)
+
+    %ul.nav.navbar-nav.text-uppercase.navbar-right
+      %li#notifications-box.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %i.fa.fa-bell-o
+          %span.badge
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => "javascript:void(0)"}
+              %span.text-muted No Unread Messages
+      %li.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", role: "button"}
+          -#= image_tag(current_user.avatar.url(:thumb), class: "nav-photo img-circle", alt: "user")
+          = current_user.first_name
+          %b.caret
+        %ul.dropdown-menu
+          - if can? :profile, User
+            %li
+              = link_to profile_user_path(current_user) do
+                %i.fa.fa-user.fa-fw
+                Profile
+          %li
+            = link_to destroy_user_session_path, :method => 'delete' do
+              %i.fa.fa-sign-out.fa-fw
+              Log Out

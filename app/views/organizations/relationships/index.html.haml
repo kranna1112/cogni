@@ -1,0 +1,19 @@
+.row
+  .col-sm-12
+    .card
+      .header
+        %strong.title.text-uppercase relationships
+        -#-if can? :new, @organization => Relationship
+        -#  = link_to 'New Relationship', new_organization_relationship_path, remote: true,  class: 'btn btn-warning pull-right'
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Company
+              %th Type
+              %th Status
+              %th{colspan:"2"}
+
+          %tbody.relationship-index
+            = render 'organizations/relationships/index'
+.modal.fade#relationship-modal

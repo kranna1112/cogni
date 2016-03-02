@@ -1,0 +1,16 @@
+- @relocations.each do |relo|
+  %tr
+    %td
+      = relo.employee.name
+    %td
+      = relo.status
+    %td
+      = relo.organization.name
+    %td
+      = relo.budget_cents
+    %td
+      = relo.origin_metro_area_id
+    %td
+      = relo.destination_metro_area_id
+    %td#actions
+

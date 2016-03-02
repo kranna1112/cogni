@@ -1,0 +1,13 @@
+.row
+  .col-md-8
+    %h2
+      Welcome
+      =
+%h1 Home#dashboard
+%p Find me in app/views/cognizant_subdomain/home/dashboard.html.haml
+%h2
+  = current_user.organization.name
+%p
+  = current_user.current.role
+%h4 Cognizant
+= controller_name

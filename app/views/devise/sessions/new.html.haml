@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+      .sign-form
+        %h3.first-child Sign In To Your Account
+        %hr
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          = render 'shared/error_messages', :object => f.object
+          .form-group.input-group
+            %span.input-group-addon
+              %i.fa.fa-envelope-o.fa-fw
+            = f.text_field :login, autofocus: true, placeholder: "Enter username or email", class: 'form-control'
+          .form-group.input-group
+            %span.input-group-addon
+              %i.fa.fa-lock.fa-fw
+            = f.password_field :password, placeholder: "Enter password", class: 'form-control'
+          - if devise_mapping.rememberable?
+            .checkbox.signin-checkbox
+              = f.check_box :remember_me
+              = f.label :remember_me
+          %div
+            = f.submit "Sign In", class: 'btn btn-warning'
+
+        %hr
+          = render "devise/shared/links"

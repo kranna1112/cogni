@@ -1,0 +1,23 @@
+- @users.each do |user|
+  %tr
+    %td
+      = link_to user.name, admin_user_path(user)
+    %td
+      = user.email
+    %td
+      = link_to user.company.name, admin_organization_path(user.company)
+    %td
+      = user.user_name
+    %td
+      = user.last_sign_in_at
+    %td
+      = user.can_access_finance?
+    %td
+      = user.can_access_legal?
+    %td
+      = user.super_admin
+    %td#actions
+      = link_to edit_admin_user_path(user), remote: true do
+        %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}
+      = link_to admin_user_delete_path(user), remote: true do
+        %i.fa.fa-trash-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Cancel'}

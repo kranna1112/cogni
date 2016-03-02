@@ -1,0 +1,26 @@
+= form_for [@organization, @employee], remote: true, html: { class: "form-horizontal" } do |f|
+  .modal-body
+    %h4#error_explanation{ style: "display:none"}
+    %ul.errors.text-danger{ style: "display:none"}
+    .form-group
+      .col-md-6
+        = f.label :first_name, class: 'text-capitalize'
+        = f.text_field :first_name, class: 'form-control', :required => ""
+      .col-md-6
+        = f.label :middle_name, class: 'text-capitalize'
+        = f.text_field :middle_name, class: 'form-control', :required => ""
+      .col-md-6
+        = f.label :last_name, class: 'text-capitalize'
+        = f.text_field :last_name, class: 'form-control', :required => ""
+      .col-md-6
+        = f.label :user, class: 'text-capitalize'
+        = f.select :user_id, @organization.users.without_employee.map {|usr| [ usr.first_name + usr.last_name, usr.id] }, {selected: @employee.user_id}, {class: "form-control ", :required => ""}
+    .form-group
+      .col-md-12
+        = f.label :property_values, class: 'text-capitalize'
+        = f.text_area :property_values, class: 'form-control'
+  .modal-footer
+    .actions
+      %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+      = f.submit 'Save',  class: 'btn btn-primary-me'
+.modal.fade#employee-modal

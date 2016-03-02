@@ -1,0 +1,13 @@
+$("ul.errors").html("")
+$("h4#error_explanation").html("")
+<% if @service_type.errors.any? %>
+  $("ul.errors").show()
+  $("h4#error_explanation").show()
+  $("h4#error_explanation").html("<%= pluralize(@service_type.errors.count, 'Error') %> Occurred")
+  <% @service_type.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(".service-type-index").html("<%= escape_javascript(render 'index') %>")
+  $("#service-type-modal").modal("hide")
+<% end %>

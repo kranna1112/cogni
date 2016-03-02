@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    .panel.panel-default.relocations
+      .panel-heading.clearfix
+        %strong.panel-title.text-uppercase Relocations
+        - if can? :new, Relocation
+          = link_to 'New Relocation', new_organization_relocation_path,  class: 'btn btn-primary-me pull-right'
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Employee
+            %th Status
+            %th Organization
+            %th Origin
+            %th Destination
+            %th{colspan:"2"}
+
+        %tbody.relocation-index
+          = render 'index'
+-#.modal.fade#organization-modal

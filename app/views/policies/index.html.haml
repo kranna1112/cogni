@@ -1,0 +1,21 @@
+.row
+  .col-sm-3.col-md-2.sidebar
+    = render 'admin/base/sidenav'
+  .col-sm-9.col-md-10
+    .panel.panel-default.organizations
+      .panel-heading.clearfix
+        %strong.panel-title.text-uppercase Organizations
+        = link_to 'New Policy', new_policy_path, remote: true,  class: 'btn btn-primary-me pull-right'
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Name
+            %th Role
+            %th Active
+            %th User Count
+            %th{colspan:"2"}
+
+        %tbody.organization-index
+          = render 'index'
+.modal.fade#organization-modal

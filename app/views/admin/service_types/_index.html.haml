@@ -1,0 +1,22 @@
+- @service_types.each do |type|
+  %tr
+    %td
+      = link_to type.name, admin_service_type_path(type)
+    %td
+      = type.description
+    %td
+      - if type.status == 'active'
+        %span.label.label-success.text-uppercase
+          = type.status
+      -elsif type.status == "retired"
+        %span.label.label-warning.text-uppercase
+          = type.status
+      -elsif type.status == 'draft'
+        %span.label.label-default.text-uppercase
+          = type.status
+      -else
+        %span.label.label-info.text-uppercase
+          = type.status
+    %td#actions
+      -#= link_to edit_admin_service_type_path(type), remote: true do
+      -#  %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

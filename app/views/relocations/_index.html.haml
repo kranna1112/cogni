@@ -1,0 +1,15 @@
+- @relocations.each do |relo|
+  %tr
+    %td
+      = relo.employee.name
+    %td
+      = relo.status
+    %td
+      = relo.organization.name
+    %td
+      = relo.origin_metro_area.name
+    %td
+      = relo.destination_metro_area.name
+    %td#actions
+      = link_to edit_admin_organization_path(org), remote: true do
+        %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

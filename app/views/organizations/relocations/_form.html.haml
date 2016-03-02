@@ -1,0 +1,41 @@
+= form_for [@organization, @relocation], remote: true, html: { class: "form-horizontal" } do |f|
+  .modal-body
+    %h4#error_explanation{ style: "display:none"}
+    %ul.errors.text-danger
+    .form-group
+      .col-md-6
+        = label_tag :first_name, "First Name", class: 'text-capitalize'
+        = text_field_tag "user[first_name]", "", class: 'form-control', required: true
+      .col-md-6
+        = label_tag :last_name, "Last Name", class: 'text-capitalize'
+        = text_field_tag "user[last_name]", "", class: 'form-control', required: true
+      .col-md-6
+        = label_tag :eamil, "Email", class: 'text-capitalize'
+        = email_field_tag "user[email]", "", class: 'form-control', required: true
+      .col-md-6
+        = f.label :policy, class: 'text-capitalize'
+        = f.select :policy_id, @organization.policies.active.map {|policy| [ policy.name + policy.id.to_s]}, { selected: @relocation.policy_id}, {class: 'form-control'}
+      .col-md-6
+        = f.label :budget_cents, class: 'text-capitalize'
+        = f.number_field :budget_cents, class: 'form-control', :required => ""
+      .col-md-6
+        = f.label :budget_currency, class: 'text-capitalize'
+        = f.text_field :budget_currency, class: 'form-control'
+      .col-md-6
+        = f.label :status, class: 'text-capitalize'
+        = f.select :status, Relocation::aasm.states_for_select, { selected: @relocation.policy_id}, {class: 'form-control', :required => ""}
+      .col-md-6
+        = f.label :origin_metro_area, class: 'text-capitalize'
+        = f.text_field :origin_metro_area_id, class: 'form-control'
+      .col-md-6
+        = f.label :destination_metro_area, class: 'text-capitalize'
+        = f.text_field :destination_metro_area_id, class: 'form-control'
+      .col-md-12
+        = f.label :property_values, class: 'text-capitalize'
+        = f.text_area :property_values, class: 'form-control', :required => ""
+  .modal-footer
+    .actions
+      %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+      = f.submit 'Save',  class: 'btn btn-primary-me'
+      -#%button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+      -#= f.submit 'Save',  class: 'btn btn-warning'

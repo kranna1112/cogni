@@ -1,0 +1,54 @@
+.panel.panel-default
+  .panel-heading
+    %h3 Select Your Services
+  .panel-body
+    .row
+      .col-md-12
+        .stepwizard
+          .stepwizard-row
+            .stepwizard-step
+              = link_to cognizant_relocation_step_path(@relocation, 'welcome'), class: "btn btn-success btn-circle" do
+                %i.fa.fa-check.fa-fw
+              %p Welcome
+            .stepwizard-step
+              = link_to cognizant_relocation_step_path(@relocation, 'confirm'), class: "btn btn-success btn-circle" do
+                %i.fa.fa-check.fa-fw
+              %p Confirm Information
+            .stepwizard-step
+              %li.btn.btn-primary-me.btn-circle
+                %i.fa.fa-ellipsis-h.fa-fw
+              %p
+                %strong Select Services
+            .stepwizard-step
+              %li.btn.btn-default.btn-circle
+                %i.fa.fa-ellipsis-h.fa-fw
+              %p Next Steps
+    .row
+      .col-md-12
+        %p.lead
+          Cognizant provides relocating employees with essential benefits that are intended to help facilitate a timely
+          transition to a new location. These benefits, or relocation services, are performed on your behalf by
+          Cognizant-approved service providers. Below is a list of the relocation benefits that are being made available
+          for your upcoming relocation. Please review the services and select those that you plan to utilize. Don't worry,
+          you can change your mind in the future. This information is being collected now to help us calculate a
+          preliminary cost projection for your upcoming relocation.
+        %hr
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th Select
+                %th Service
+                %th Description
+                %th Criteria
+            %tbody
+              %tr
+
+
+    %p
+      = link_to previous_wizard_path, class: "btn btn-primary-me btn-lg pull-left" do
+        %i.fa.fa-angle-double-left.fa-fw
+        Previous
+      = link_to next_wizard_path, class: "btn btn-primary-me btn-lg pull-right" do
+        Next
+        %i.fa.fa-angle-double-right.fa-fw

@@ -1,0 +1,23 @@
+.row
+  .col-sm-12
+    .card
+      .header
+        %strong.title.text-uppercase Memberships
+        -if can? :new, @organization => Membership
+          = link_to 'New Membership', new_organization_membership_path, remote: true,  class: 'btn btn-primary-me pull-right'
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Name
+              %th Email
+              %th Company
+              %th Role
+              %th.text-center Can Access Finance?
+              %th.text-center Can Access Legal?
+              %th Last Login
+              %th{colspan:"2"}
+
+          %tbody.membership-index
+            = render 'organizations/memberships/index'
+.modal.fade#membership-modal

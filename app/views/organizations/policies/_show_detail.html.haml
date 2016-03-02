@@ -1,0 +1,38 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+      %h4.modal-title Policy
+
+    .modal-body
+      .row
+        %p.col-md-12
+          %b Name:
+          = @policy.name
+        %p.col-md-12
+          %b Description:
+          = @policy.description
+        %p.col-md-6
+          %b Effective Date:
+          = @policy.start_at.strftime("%m-%d-%Y") unless @policy.start_at.blank?
+        %p.col-md-6
+          %b Expiration Date:
+          = @policy.end_at.strftime("%m-%d-%Y") unless @policy.end_at.blank?
+
+      - if @policy.policy_benefits.length > 0
+        %hr
+        %h4 Benefits
+        #policy-benifits
+        - @policy.policy_benefits.each do |pb|
+          %hr
+          .row
+            %p.col-md-11
+              %b Name:
+              = pb.name
+            %p.col-md-11
+              %b Description:
+              = pb.description
+            %p.col-md-11
+              %b Service Type:
+              = pb.service_type.name if pb.service_type

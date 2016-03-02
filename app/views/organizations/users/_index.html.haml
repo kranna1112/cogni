@@ -1,0 +1,21 @@
+- @users.each do |user|
+  %tr
+    %td
+      - if can? :show, user
+        = link_to user.name, user_path(user)
+      - else
+        = user.name
+    %td
+      = user.email
+    %td
+      - if can? :show, user.company
+        = link_to user.company.name, organization_path(user.company)
+      - else
+        = user.company.name
+    %td
+      = user.user_name
+    %td
+      = user.last_sign_in_at
+    %td#actions
+      -#= link_to edit_organization_user_path(@organization, user.id), remote: true do
+      -#  %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

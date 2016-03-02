@@ -1,0 +1,85 @@
+.row
+  .col-md-8.right-border
+    %h2
+      Welcome
+      = current_user.name
+    %p
+      Congratulations on your new project assignment! As part of your relocation, you have been authorized for the following
+      mobility services that you can utilize to help you transition to the new work location. Click a service below to get started.
+  .col-md-4
+    = link_to 'Neighborhood Scout', neighborhoodscout, data: { confirm: "You are leaving MobilityEmpowerd. Are you sure?" }, class: 'btn btn-success btn-lg', target: "_blank"
+- if @relocation.initiated?
+  .row
+    .col-md-12
+      %h4 Need to Onboard [Initiated]
+- elsif @relocation.onboarded?# or @relocation.estimated?
+  .row
+    .col-md-12
+      %h4 Can view but no ordering [Onboard & Estimated]
+  .row.service-buttons
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-logistics3.service-button
+        %br
+        Move My Stuff
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-transport362.service-button
+        %br
+        Move My Automobile
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-airplane68.service-button
+        %br
+        Book My Travel
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-sign20.service-button
+        %br
+        Break My Lease
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-office42.service-button
+        %br
+        Find New Apartment
+    -#.col-md-2
+    -#  = link_to '#', {class: 'btn btn-xl'} do
+    -#    %i.fa.flaticon-vacations2
+    -#    %br
+    -#    Find Temporary Housing
+- elsif @relocation.active?
+  .row.service-buttons
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-logistics3.service-button
+        %br
+        Move My Stuff
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-transport362.service-button
+        %br
+        Move My Automobile
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-airplane68.service-button
+        %br
+        Book My Travel
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-sign20.service-button
+        %br
+        Break My Lease
+    .col-md-2
+      = link_to '#', {class: 'btn btn-xl'} do
+        %i.fa.flaticon-office42.service-button
+        %br
+        Find New Apartment
+    -#.col-md-2
+    -#  = link_to '#', {class: 'btn btn-xl'} do
+    -#    %i.fa.flaticon-vacations2
+    -#    %br
+    -#    Find Temporary Housing
+- else
+  .row
+    .col-md-12
+      %h4 can't do anything but view info [complete, cancelled, suspended, closed]

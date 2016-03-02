@@ -1,0 +1,22 @@
+- @relationships.each do |relationship|
+  %tr
+    %td
+      = relationship.child.name
+    %td
+      = relationship.role
+    %td
+      - if relationship.status == 'active'
+        %span.label.label-success.text-uppercase
+          = relationship.status
+      -elsif relationship.status == "retired"
+        %span.label.label-warning.text-uppercase
+          = relationship.status
+      -elsif relationship.status == 'proposed'
+        %span.label.label-default.text-uppercase
+          = relationship.status
+      -else
+        %span.label.label-info.text-uppercase
+          = relationship.status
+    %td#actions
+      -#= link_to edit_organization_relationship_path(@organization, relationship), remote: true do
+      -#  %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

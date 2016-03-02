@@ -1,0 +1,19 @@
+%p Hello #{@user.first_name}
+
+%p
+  A new user account has been created for you as part of #{@organization.name}'s Mobility Empowered subscription. You now need to create
+  your password which can be accomplished through the following link.
+
+%p
+  =link_to "Create Your Mobility Empowered Password", edit_password_url(@user, :reset_password_token => @token)
+
+%p This link is valid for 24 hours. After which you must request a new invitation to be sent.
+
+%p
+  If you have questions or need any assistance, please don't hesitate to
+  =mail_to "service@mobilityempowered.com", "email us."
+
+%p
+  Mobility Empowered
+  %br/
+  %small Relocation powered by ME&copy;

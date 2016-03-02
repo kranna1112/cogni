@@ -1,0 +1,38 @@
+%header
+  %nav.navbar.navbar-fixed-top
+    .container
+      .navbar-header
+        %button.navbar-toggle.collapsed{"data-target" => "me-navbar-collapse", "data-toggle" => "collapse", "aria-expanded" => false}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        =link_to root_path, class: "navbar-brand text-uppercase" do
+          %strong< Cognizant
+          %span.font-light> empowered
+
+      %ul.nav.navbar-nav.text-uppercase.navbar-right
+        %li#notifications-box.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-envelope-o
+            %span.badge
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "javascript:void(0)"}
+                %span.text-muted No Unread Messages
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", role: "button"}
+            -#= image_tag(current_user.avatar.url(:thumb), class: "nav-photo img-circle", alt: "user")
+            = current_user.first_name
+            %b.caret
+          %ul.dropdown-menu
+            - if can? :profile, User
+              %li
+                = link_to profile_user_path(current_user) do
+                  %i.fa.fa-user.fa-fw
+                  Profile
+            %li
+              = link_to destroy_user_session_path, :method => 'delete' do
+                %i.fa.fa-sign-out.fa-fw
+                Log Out

@@ -1,0 +1,11 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      %h3 Inactivate @user.name?
+    .modal-body
+      %h4.error_explanation{ style: "display:none;"}
+      %ul.errors{ style: "display:none;"}
+      %p Are you sure you wish to inactivate #{@user.name}'s account?
+    .modal-footer
+      = link_to "Inactivate User", admin_user_path(@user), method: :delete, remote: true, class: "btn btn-danger"
+      = link_to "Close", "#", class: "btn btn-default", data: { dismiss: "modal" }

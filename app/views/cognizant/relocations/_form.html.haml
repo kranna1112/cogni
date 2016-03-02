@@ -1,0 +1,29 @@
+= form_for [:cognizant, @relocation], remote: true, html: { class: "form-horizontal" } do |f|
+  .modal-body
+    %h4#error_explanation{ style: "display:none"}
+    %ul.errors.text-danger
+    .form-group
+      .col-md-6
+        = f.label :origin_metro_area, class: 'text-capitalize'
+        = f.text_field :origin_metro_area_id, class: 'form-control'
+      .col-md-6
+        = f.label :destination_metro_area, class: 'text-capitalize'
+        = f.text_field :destination_metro_area_id, class: 'form-control'
+    .form-group
+      .col-md-6
+        = f.label :start_at
+        - if @relocation.start_at.nil?
+          = f.text_field :start_at, "data-provide"=> "datepicker", class: "datepicker form-control", required: true#,"data-date-start-date" => "#{@agreement.agreement.start_at}", "data-date-end-date" => "#{@agreement.agreement.end_at}"
+        - else
+          = f.text_field :start_at, value: l(@relocation.start_at, format: :notime), "data-provide"=> "datepicker", class: "datepicker form-control", required: true#, "data-date-start-date" => "#{@agreement.agreement.start_at}", "data-date-end-date" => "#{@agreement.agreement.end_at}"
+  .modal-footer
+    .actions
+      %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+      = f.submit 'Save',  class: 'btn btn-primary-me'
+:coffeescript
+  $ ->
+    $('.datepicker').datepicker
+      autoclose: true
+      format: 'mm-dd-yyyy'
+      todayBtn: true
+      todayHighlight: true

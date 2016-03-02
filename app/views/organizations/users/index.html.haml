@@ -1,0 +1,26 @@
+.row
+  .col-sm-12
+    .card
+      .header
+        %strong.title.text-uppercase Users
+        -if can? :create, @organization => User
+          = link_to 'New User', new_organization_user_path, remote: true,  class: 'btn btn-primary-me pull-right'
+
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Name
+              %th Email
+              %th Company
+              %th User Name
+              %th Last Login
+              %th Actions
+
+          %tbody.user-index
+            - if @users.empty?
+              %tr
+                %td.bg-info.text-center{colspan: 6} There are no users for this organization.
+            - else
+              = render 'organizations/users/index'
+.modal.fade#user-modal

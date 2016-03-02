@@ -1,0 +1,5 @@
+- @relocation.errors.messages.keys.each do |attribute|
+  %li
+    = attribute
+    - @relocation.errors.messages[attribute].each do |er|
+      = er

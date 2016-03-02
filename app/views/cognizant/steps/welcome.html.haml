@@ -1,0 +1,14 @@
+.jumbotron.jumbotron-white
+  %h2
+    Welcome
+    = current_user.name + '!'
+
+  %p
+    Congratulations on your new project assignment! The first step in your relocation is to help us better understand
+    your needs and situation. We will guide you as we collect this information. This data will then be used to calculate
+    a preliminary budget that your project manager will review. Once approved, you will be able to begin your relocation
+    and order the necessary services to get you to your new location. Ready to start?
+  %p
+    = link_to next_wizard_path, class: "btn btn-primary-me btn-lg" do
+      Get Started
+      %i.fa.fa-angle-double-right.fa-fw

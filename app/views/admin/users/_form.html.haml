@@ -1,0 +1,46 @@
+= form_for [:admin, @user], remote: true, html: { class: "form-horizontal" } do |f|
+  .modal-body
+    %h4#error_explanation{ style: "display:none"}
+    %ul.errors.text-danger{ style: "display:none"}
+    .form-group
+      .col-md-6
+        = f.label :first_name, class: 'text-capitalize'
+        = f.text_field :first_name, class: 'form-control', :required => ""
+      .col-md-6
+        = f.label :last_name, class: 'text-capitalize'
+        = f.text_field :last_name, class: 'form-control', :required => ""
+    .form-group
+      .col-md-6
+        = f.label :email
+        = f.email_field :email, class: 'form-control', :required => ""
+      .col-md-6
+        = f.label :user_name, class: 'text-capitalize'
+        = f.text_field :user_name,  class: 'form-control'
+    .form-group
+      .col-md-6
+        = f.label "Company"
+        = f.collection_select :company_id, @companies, :id, :name, {}, {class: 'form-control', :required => ""}
+      - unless @user.persisted?
+        .col-md-6
+          = f.label :role
+          = f.select :role, Membership::ROLES, {selected: 'worker'}, {class: "form-control", required: ""}
+    .form-group
+      .col-md-12
+        %label Permissions
+        .checkbox
+          %label
+            = f.check_box :super_admin
+            Super Admin
+        - unless @user.persisted?
+          .checkbox
+            %label.pull-left
+              = f.check_box :legal
+              Can Access Legal
+          .checkbox
+            %label
+              = f.check_box :finance
+              Can Access Finance
+  .modal-footer
+    .actions
+      %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+      = f.submit 'Save',  class: 'btn btn-primary-me'

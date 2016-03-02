@@ -1,0 +1,20 @@
+.row
+  .col-sm-3.col-md-2.sidebar
+    = render 'admin/base/sidenav'
+  .col-sm-9.col-md-10
+    .panel.panel-default.service-types
+      .panel-heading.clearfix
+        %strong.panel-title.text-uppercase Service Types
+        = link_to 'New Service Type', new_admin_service_type_path, remote: true,  class: 'btn btn-primary-me pull-right'
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Name
+            %th Description
+            %th Status
+            %th{colspan:"2"}
+
+        %tbody.service-type-index
+          = render 'index'
+.modal.fade#service-type-modal

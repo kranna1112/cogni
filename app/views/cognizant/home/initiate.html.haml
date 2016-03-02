@@ -1,0 +1,8 @@
+%h1 Home#initiate
+%p Find me in app/views/cognizant_subdomain/home/initiate.html.haml
+%ul
+  %li valid when user = employee
+  %li valid when user does not have a relocation (active)
+  %li valid when user clicks on initiate
+  %li collects data used to create new relocation
+= link_to 'New Relocation', new_organization_relocation_path(organization_id: current_user.current.organization_id), class: 'btn btn-primary-me pull-right'

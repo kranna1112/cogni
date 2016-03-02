@@ -1,0 +1,31 @@
+= simple_form_for [@organization, @policy], remote: true, wrapper: :vertical_form do |f|
+  .modal-body
+    .row
+      %h4#error_explanation{ style: "display:none"}
+      %ul.errors.text-danger{ style: "display:none"}
+      = f.input :name, error: 'A policy name is required.', wrapper_html: { class: 'col-md-12' }#, input_html: { class: 'col-md-12' }#, input_html: { class: 'form-control'}
+      = f.input :description, placeholder: 'Please describe the intentions and use for this policy.', wrapper_html: { class: 'col-md-12'}
+      = f.input :status, collection: Policy::STATUSES, wrapper_html: { class: 'col-md-12'}
+      = f.input :start_at, as: :string, label: 'Effective Date', input_html: {class: 'datepicker', data: { behavior: 'datepicker'}}, wrapper_html: { class: 'col-md-6'}
+      = f.input :end_at, as: :string, label: 'Expiration Date',input_html: {class: 'datepicker', data: { provide: 'datepicker'}}, wrapper_html: { class: 'col-md-6'}
+      -#= l(@policy.start_at, format: :notime)
+
+    .row
+      %h4 Benefits
+      #policy-benifits
+        = f.simple_fields_for :policy_benefits do |pb|
+          = render 'policy_benefit_fields', f: pb
+      .links
+        = link_to_add_association 'Add Benefit', f, :policy_benefits,  class: 'btn btn-primary-me pull-right'
+
+    .row
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        = f.button :submit, 'Save', class: 'btn btn-primary-me'
+:coffeescript
+  $ ->
+    $('.datepicker').datepicker
+      autoclose: true
+      format: 'mm-dd-yyyy'
+      todayBtn: true
+      todayHighlight: true

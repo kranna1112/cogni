@@ -1,0 +1,25 @@
+- @memberships.each do |membership|
+  %tr
+    %td
+      - if can? :show, @organization => User
+        = link_to membership.user.name, user_path(membership.user)
+      - else
+        = membership.user.name
+    %td
+      = membership.user.email
+    %td
+      - if can? :show, membership.user.company
+        = link_to membership.user.company.name, organization_path(membership.user.company)
+      - else
+        = membership.user.company.name
+    %td
+      = membership.role
+    %td.text-uppercase.text-center
+      = membership.can_access_finance
+    %td.text-uppercase.text-center
+      = membership.can_access_legal
+    %td
+      = membership.user.last_sign_in_at
+    %td#actions
+      -#= link_to edit_organization_membership_path(@organization, membership), remote: true do
+      -#  %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

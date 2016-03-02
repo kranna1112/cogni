@@ -1,0 +1,26 @@
+= form_for [@organization, @membership], remote: true, html: { class: "form-horizontal" } do |f|
+  .modal-body
+    %h4#error_explanation{ style: "display:none"}
+    %ul.errors.text-danger{ style: "display:none"}
+    .form-group
+      .col-md-6
+        = f.label :user
+        = f.collection_select :user_id, @users, :id, :name_email, {}, {class: "form-control"}
+      .col-md-6
+        = f.label :role
+        = f.select :role, Membership::ROLES, {selected: 'worker'}, {class: "form-control", required: ""}
+    .form-group
+      .col-md-6
+        %label Permissions
+        .checkbox
+          %label.pull-left
+            = f.check_box :can_access_legal
+            Can Access Legal?
+        .checkbox
+          %label
+            = f.check_box :can_access_finance
+            Can Access Finance?
+  .modal-footer
+    .actions
+      %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+      = f.submit 'Save',  class: 'btn btn-warning'

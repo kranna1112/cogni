@@ -1,0 +1,25 @@
+.row
+  .col-sm-3.col-md-2.sidebar
+    = render 'admin/base/sidenav'
+  .col-sm-9.col-md-10
+    .panel.panel-default.users
+      .panel-heading.clearfix
+        %strong.panel-title.text-uppercase Users
+        = link_to 'New User', new_admin_user_path, remote: true,  class: 'btn btn-primary-me pull-right'
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Name
+            %th Email
+            %th Company
+            %th User Name
+            %th Last Login
+            %th Access Finance?
+            %th Access Legal?
+            %th Super Admin
+            %th{colspan:"2"}
+
+        %tbody.user-index
+          = render 'index'
+.modal.fade#user-modal

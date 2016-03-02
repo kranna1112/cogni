@@ -1,0 +1,13 @@
+$("ul.errors").html("")
+$("h4#error_explanation").html("")
+<% if @membership.errors.any? %>
+  $("ul.errors").show()
+  $("h4#error_explanation").show()
+  $("h4#error_explanation").html("<%= pluralize(@membership.errors.count, 'Error') %> Occurred")
+  <% @membership.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(".membership-index").html("<%= escape_javascript(render 'organizations/memberships/index') %>")
+  $("#membership-modal").modal("hide")
+<% end %>

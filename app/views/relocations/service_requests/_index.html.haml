@@ -1,0 +1,32 @@
+- @policies.each do |policy|
+  %tr
+    %td
+      - if can? :show, policy
+        = link_to policy.name, new_organization_policy_path(policy)
+      - else
+        = policy.name
+    %td
+      = policy.description
+    %td
+      - if policy.status == 'active'
+        %span.label.label-success.text-uppercase
+          = policy.status
+      -elsif policy.status == 'expired'
+        %span.label.label-warning.text-uppercase
+          = policy.status
+      -elsif policy.status == 'draft'
+        %span.label.label-default.text-uppercase
+          = policy.status
+      -elsif policy.status == 'cancelled'
+        %span.label.label-danger.text-uppercase
+          = policy.status
+      -else
+        %span.label.label-info.text-uppercase
+          = policy.status
+    %td
+      = l(policy.start_at, :format => :notime)
+    %td
+      = l(policy.end_at, :format => :notime)
+    %td#actions
+      -#= link_to edit_organization_user_path(@organization, user.id), remote: true do
+      -#  %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

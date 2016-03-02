@@ -1,0 +1,6 @@
+<% if @relocation.errors.present? %>
+  $(".errors").html("<%= escape_javascript(render '/organizations/relocations/errors') %>")
+<% else %>
+  $("#relocation-modal").modal("hide")
+  $(".relocation-index").html("<%= escape_javascript(render 'index') %>")
+<% end %>

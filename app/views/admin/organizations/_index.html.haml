@@ -1,0 +1,20 @@
+- @organizations.each do |org|
+  %tr
+    %td
+      = link_to org.name, admin_organization_path(org)
+    %td
+      = org.role
+    %td
+      - if org.active?
+        %span.label.label-success.text-uppercase
+          Active
+      - else
+        %span.label.label-danger.text-uppercase
+          Inactive
+    %td
+      = org.access_id
+    %td
+      = org.users_count
+    %td#actions
+      = link_to edit_admin_organization_path(org), remote: true do
+        %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

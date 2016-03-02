@@ -1,0 +1,19 @@
+- @employees.each do |employee|
+  %tr
+    %td
+      - if can? :show, employee
+        = link_to employee.name, employee_path(employee)
+      - else
+        = employee.name
+    %td
+      = employee.organization.name
+    %td
+      - if can? :show, User
+        = link_to employee.user.email
+      - else
+        = employee.user.present? ? employee.user.email : nil
+    %td
+      = employee.relocations_count
+    %td#actions
+      -#= link_to edit_organization_path(org), remote: true do
+      -#  %i.fa.fa-pencil-square-o.fa-lg.fa-fw{rel: :tooltip, "data-placement" => "top", title: 'Edit'}

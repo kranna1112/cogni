@@ -1,0 +1,13 @@
+$("ul.errors").html("")
+$("h4#error_explanation").html("")
+<% if @relocation.errors.any? %>
+  $("h4#error_explanation").show()
+  $("ul.errors").show()
+  $("h4#error_explanation").html("<%= pluralize(@relocation.errors.count, 'Error') %> Occurred")
+  <% @relocation.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(".relocation-data").html("<%= escape_javascript(render 'show') %>")
+  $("#confirm-modal").modal("hide")
+<% end %>
