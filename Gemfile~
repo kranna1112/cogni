@@ -10,7 +10,8 @@ gem 'pg'
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'sidekiq-failures'
-
+gem 'capistrano-rails'
+gem 'colorize', '0.7.4'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
 gem 'active_link_to'
